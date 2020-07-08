@@ -1,8 +1,11 @@
 #pragma once
+#include "time.h"
 #include <fstream>
 #include <iostream>
+#include <random>
 
 class chip8 {
+  public:
 	unsigned short opcode;
 	unsigned char memory[4096];
 	unsigned char V[16];
@@ -13,8 +16,6 @@ class chip8 {
 	unsigned char soundTimer;
 	unsigned short stack[16];
 	unsigned short sp;
-	unsigned char key[16];
-	bool drawFlag;
 	unsigned char chip8_fontset[80] = {
 		0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
 		0x20, 0x60, 0x20, 0x20, 0x70, // 1
@@ -34,10 +35,11 @@ class chip8 {
 		0xF0, 0x80, 0xF0, 0x80, 0x80  // F
 	};
 
-  public:
 	chip8();
 	~chip8();
 	void initialize();
 	void emulateCycle();
 	void loadROM(char const *filename);
+	bool drawFlag;
+	unsigned char key[16];
 };
