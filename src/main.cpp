@@ -8,11 +8,11 @@ int main(int argc, char **argv) {
 	sf::RenderWindow window(sf::VideoMode(1024, 512), "Chocolate chip");
 	chip8 myChip8;
 	uint8_t keymap[16] = {
-		sf::Keyboard::Num1, sf::Keyboard::Num2, sf::Keyboard::Num3,
-		sf::Keyboard::Num4, sf::Keyboard::Q,	sf::Keyboard::W,
-		sf::Keyboard::E,	sf::Keyboard::R,	sf::Keyboard::A,
-		sf::Keyboard::S,	sf::Keyboard::D,	sf::Keyboard::F,
-		sf::Keyboard::Z,	sf::Keyboard::X,	sf::Keyboard::C,
+		sf::Keyboard::X,	sf::Keyboard::Num1, sf::Keyboard::Num2,
+		sf::Keyboard::Num3, sf::Keyboard::Q,	sf::Keyboard::W,
+		sf::Keyboard::E,	sf::Keyboard::A,	sf::Keyboard::S,
+		sf::Keyboard::D,	sf::Keyboard::Z,	sf::Keyboard::C,
+		sf::Keyboard::Num4, sf::Keyboard::R,	sf::Keyboard::F,
 		sf::Keyboard::V};
 
 	// sf::Texture texture;
@@ -66,10 +66,7 @@ int main(int argc, char **argv) {
 			image.create(64, 32, pixels);
 			texture.loadFromImage(image);
 			sprite.setTexture(texture);
-			// sprite.setTextureRect(sf::IntRect(32, 0, 32, 64));
-			// sprite.setPosition(200, 200);
 			sprite.setScale({16, 16});
-			window.clear(sf::Color::Black);
 			window.draw(sprite);
 			window.display();
 		}

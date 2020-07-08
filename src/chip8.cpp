@@ -228,6 +228,7 @@ void chip8::emulateCycle() {
 
 		drawFlag = true;
 		pc += 2;
+		break;
 	}
 
 	case 0xE000: {
