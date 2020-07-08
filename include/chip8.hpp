@@ -3,19 +3,24 @@
 #include <fstream>
 #include <iostream>
 #include <random>
+#include <stdint.h>
 
 class chip8 {
-  public:
-	unsigned short opcode;
-	unsigned char memory[4096];
-	unsigned char V[16];
-	unsigned short I;
-	unsigned short pc;
-	unsigned char gfx[64 * 32];
-	unsigned char delayTimer;
-	unsigned char soundTimer;
-	unsigned short stack[16];
-	unsigned short sp;
+
+  private:
+	uint16_t stack[16]; // Stack
+	uint16_t sp;		// Stack pointer
+
+	uint8_t memory[4096]; // Memory (4k)
+	uint8_t V[16];		  // V registers (V0-VF)
+
+	uint16_t pc;	 // Program counter
+	uint16_t opcode; // Current op code
+	uint16_t I;		 // Index register
+
+	uint8_t delayTimer; // Delay timer
+	uint8_t soundTimer; // Sound timer
+
 	unsigned char chip8_fontset[80] = {
 		0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
 		0x20, 0x60, 0x20, 0x20, 0x70, // 1
@@ -35,11 +40,14 @@ class chip8 {
 		0xF0, 0x80, 0xF0, 0x80, 0x80  // F
 	};
 
+  public:
+	uint8_t gfx[64 * 32]; // Graphics buffer
+	uint8_t key[16];	  // Keypad
+	bool drawFlag;		  // Indicates a draw has occurred
+
 	chip8();
 	~chip8();
 	void initialize();
 	void emulateCycle();
 	void loadROM(char const *filename);
-	bool drawFlag;
-	unsigned char key[16];
 };
