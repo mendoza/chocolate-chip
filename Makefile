@@ -6,8 +6,8 @@ SRC		:= src
 INCLUDE	:= include
 LIB		:= lib
 
-LIBRARIES	:=
-EXECUTABLE	:= chocolate-chips
+LIBRARIES	:= -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
+EXECUTABLE	:= chocolate-chip
 
 
 all: $(BIN)/$(EXECUTABLE)
